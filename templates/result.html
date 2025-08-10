@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <title>Case Result</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+     <div class="container">
+          <h1>Case Details</h1>
+          {% if result %}
+          <div class="case-box">
+               <strong>Case ID:</strong> {{ result.case_id }}<br>
+               <strong>Petitioner Name:</strong> {{ result.petitioner }}<br>
+               <strong>Respondent Name:</strong> {{ result.respondent }}<br>
+               <strong>Advocate Name:</strong> {{ result.advocate }}<br>
+               <strong>Status:</strong> {{ result.status }}<br>
+               <strong>Next Date:</strong> {{ result.next_date }}
+          </div>
+          {% else %}
+          <p class="error">No record found.</p>
+          {% endif %}
+          <a href="/" class="back-button">🔙 Back</a>
+     </div>
+</body>
+
+</html>

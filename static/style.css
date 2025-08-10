@@ -1,0 +1,154 @@
+body {
+     font-family: 'Segoe UI', sans-serif;
+     margin: 0;
+     padding: 0;
+     min-height: 100vh;
+     background-image: url('https://images.unsplash.com/photo-1589820296156-2454bb8a6f16?fit=crop&w=1470&q=80');
+     background-size: cover;
+     background-position: center;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+.overlay {
+     backdrop-filter: blur(3px);
+     background-color: rgba(255, 255, 255, 0.3);
+     /* very light white tint */
+     width: 100%;
+     height: 100vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+.container {
+     background: rgba(255, 255, 255, 0.88);
+     padding: 40px;
+     border-radius: 12px;
+     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+     width: 400px;
+}
+h1 {
+     text-align: center;
+     color: #2c3e50;
+     margin-bottom: 24px;
+}
+
+label {
+     display: block;
+     margin-top: 15px;
+     font-weight: bold;
+     color: #333;
+}
+
+input,
+select {
+     width: 100%;
+     padding: 10px;
+     border: 1px solid #ccc;
+     margin-top: 6px;
+     border-radius: 6px;
+}
+
+button {
+     width: 100%;
+     margin-top: 25px;
+     padding: 12px;
+     background: #3498db;
+     color: white;
+     border: none;
+     font-size: 16px;
+     border-radius: 6px;
+     cursor: pointer;
+     transition: background 0.3s ease;
+}
+
+button:hover {
+     background: #2980b9;
+}
+.case-box {
+     background: #f1f9ff;
+     border-left: 4px solid #3498db;
+     padding: 15px;
+     margin-top: 20px;
+     font-size: 15px;
+     line-height: 1.6;
+     white-space: pre-wrap;
+}
+
+.error {
+     color: #c0392b;
+     font-weight: bold;
+     text-align: center;
+     margin-top: 20px;
+}
+
+.back-button {
+     display: block;
+     text-align: center;
+     margin-top: 30px;
+     text-decoration: none;
+     color: #3498db;
+     font-weight: bold;
+}
+
+.back-button:hover {
+     color: #21618c;
+}
+.wrapper {
+     width: 100%;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+
+/* Additional styles for CAPTCHA and error handling */
+.captcha-container {
+     margin: 20px 0;
+}
+
+.captcha-wrapper {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     margin: 10px 0;
+}
+
+.captcha-image {
+     height: 50px;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+}
+
+.refresh-btn {
+     background: #f8f9fa;
+     border: 1px solid #ccc;
+     border-radius: 4px;
+     padding: 8px 12px;
+     cursor: pointer;
+     font-size: 16px;
+     transition: background 0.3s ease;
+}
+
+.refresh-btn:hover {
+     background: #e9ecef;
+}
+
+.error-message {
+     background-color: #f8d7da;
+     color: #721c24;
+     padding: 12px;
+     border-radius: 6px;
+     margin-bottom: 20px;
+     border: 1px solid #f5c6cb;
+     text-align: center;
+}
+
+.disclaimer {
+     font-size: 0.8em;
+     font-style: italic;
+     text-align: center;
+     color: #555;
+     margin-top: 30px;
+     padding: 10px;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <title>Court Case Finder</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+     <div class="wrapper">
+          <div class="container">
+               <h1>Court Case Finder</h1>
+               
+               {% if error %}
+               <div class="error-message">{{ error }}</div>
+               {% endif %}
+               
+               <form action="/result" method="POST">
+                    <label for="case_type">Case Type:</label>
+                    <select id="case_type" name="case_type" required>
+                         <option value="">-- Select Case Type --</option>
+                         <option value="CRM">CRM - Criminal Miscellaneous</option>
+                         <option value="CR">CR - Civil Revision</option>
+                         <option value="CMM">CMM - Chief Metropolitan Magistrate</option>
+                         <option value="CS">CS - Civil Suit</option>
+                         <option value="WP">WP - Writ Petition</option>
+                         <option value="OS">OS - Original Suit</option>
+                         <option value="CA">CA - Civil Appeal</option>
+                         <option value="CRR">CRR - Criminal Revision</option>
+                         <option value="BA">BA - Bail Application</option>
+                         <option value="ARB">ARB - Arbitration</option>
+                         <option value="CC">CC - Criminal Case</option>
+                         <option value="MACP">MACP - Motor Accident Claim</option>
+                         <option value="RC">RC - Rent Control</option>
+                         <option value="HMA">HMA - Hindu Marriage Act</option>
+                         <option value="NIA">NIA - Negotiable Instrument Act</option>
+                    </select>
+
+                    <label for="case_number">Case Number:</label>
+                    <input type="number" name="case_number" id="case_number" required min="1" />
+
+                    <label for="filing_year">Filing Year:</label>
+                    <input type="number" name="filing_year" id="filing_year" required min="1900" max="2099" />
+
+                    <div class="captcha-container">
+                         <label for="captcha">Enter CAPTCHA:</label>
+                         <div class="captcha-wrapper">
+                              <img src="{{ url_for('captcha_image') }}" alt="CAPTCHA" class="captcha-image" id="captcha-img">
+                              <button type="button" class="refresh-btn" onclick="refreshCaptcha()">🔄</button>
+                         </div>
+                         <input type="text" name="captcha" id="captcha" required maxlength="5" placeholder="Enter CAPTCHA" />
+                    </div>
+
+                    <button type="submit">Search</button>
+               </form>
+          </div>
+     </div>
+
+     <script>
+          function refreshCaptcha() {
+               const captchaImg = document.getElementById('captcha-img');
+               captchaImg.src = "{{ url_for('captcha_image') }}?" + Date.now();
+          }
+
+          document.querySelector("form").addEventListener("submit", function (e) {
+               const caseNumber = document.getElementById("case_number").value;
+               const filingYear = document.getElementById("filing_year").value;
+               const captcha = document.getElementById("captcha").value;
+
+               if (!caseNumber || caseNumber <= 0) {
+                    alert("Please enter a valid numeric case number.");
+                    e.preventDefault();
+               }
+
+               if (!filingYear || filingYear < 1900 || filingYear > 2099) {
+                    alert("Please enter a valid filing year between 1900 and 2099.");
+                    e.preventDefault();
+               }
+
+               if (!captcha || captcha.length < 5) {
+                    alert("Please enter the CAPTCHA code.");
+                    e.preventDefault();
+               }
+          });
+     </script>
+     <div class="disclaimer">
+          Note: Data shown here is for demonstration only. Real case details integration coming soon.
+     </div>
+</body>
+
+</html>
